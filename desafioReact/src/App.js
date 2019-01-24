@@ -7,12 +7,13 @@
  */
 
 import React, {Component} from 'react';
-import {ListaScreen} from './screens';
+//import {ListaScreen} from './screens';
+import CreateTaskScreen from './screens/CreateTaskScreen';//trocar pra lista screen
 
 export default class App extends Component {
   render() {
     return (
-      <ListaScreen />
+      <CreateTaskScreen/>//trocar pra lista screen
     );
   }
 }
