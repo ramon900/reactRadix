@@ -1,5 +1,6 @@
 import React from 'react';
-import {StyleSheet, View, FlatList, Text, TextInput, TouchableHighlight, Button} from 'react-native';
+import {StyleSheet, View, FlatList, Text, TextInput, TouchableHighlight, TouchableOpacity} from 'react-native';
+
 
 
 class ListaScreen extends React.Component{
@@ -28,13 +29,22 @@ class ListaScreen extends React.Component{
         this.initialTasks = tasks;
 }
 
+_pressButon = (item) => {
+    alert("Botao de Indice: " + item.indice);
+}
+_pressFab = () => {
+    alert("implemente a função do FAB!");
+}
+
     _renderItem = ( {item} ) => {
         return (
+            <TouchableHighlight onPress={() => this._pressButon(item)} >
             <View>
                 <Text key={item.indice} style={style.taskItem}> 
-                    {item.indice} {item.title} 
+                   {item.title} 
                 </Text>
             </View>
+            </TouchableHighlight>
         );
     };
 
@@ -61,17 +71,16 @@ class ListaScreen extends React.Component{
         }
     };
 
-    _pressButon = () => {
-        alert("Botao pressionado");
-    }
+   
 
     render(){
         return(
-            <View style={style.taskItem}>
+            <View style= {style.container}>
 
                 <TextInput 
                     placeholder = "Digite o filtro"
                     onChangeText = {(text) => this.onChangeFilter(text)}
+                    style={{borderBottomWidth: 3, padding: 10, borderBottomColor: "#03A9F4", fontSize: 20}}
                 />
 
                 <FlatList
@@ -79,26 +88,45 @@ class ListaScreen extends React.Component{
                     renderItem={this._renderItem}
                 />
 
-                <Button title = "Abrir" onPress={this._pressButon} />
-
+            <TouchableOpacity onPress={() => this._pressFab()} style={style.fab}>
+                <Text style={style.fabIcon}>+</Text>
+            </TouchableOpacity>
             </View>
+
+            
 
             );
         }
     }
-
-    
-
     
     const style = StyleSheet.create({
         container: {
             flex: 1,
-            backgroundColor: '#F5FCFF',
             justifyContent: 'center'
         },  
         taskItem: {
-            fontSize: 18,
-            color: '#F0F'
+            fontSize: 22,
+            color: 'black',
+            padding: 5,
+            marginBottom: 10,
+            borderBottomColor: 'black',
+            borderBottomWidth: 1,
+        },
+        fab: { 
+            position: 'absolute', 
+            width: 56, 
+            height: 56, 
+            alignItems: 'center', 
+            justifyContent: 'center', 
+            right: 20, 
+            bottom: 20, 
+            backgroundColor: '#03A9F4', 
+            borderRadius: 30, 
+            elevation: 8
+            }, 
+        fabIcon: { 
+              fontSize: 40, 
+              color: 'white' 
         }
     });
     
