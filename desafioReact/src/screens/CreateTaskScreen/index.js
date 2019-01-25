@@ -1,13 +1,11 @@
 import React from 'react';
 import {StyleSheet, View, Button, Text, TextInput} from 'react-native';
-
-_onPressAdicionar = () => {        
-}
+import {Storage} from '../../storage';
 
 class CreateTaskScreen extends React.Component{
     constructor(props) {
         super(props);
-        this.state;
+
       }
     render(){
         return(
@@ -16,12 +14,12 @@ class CreateTaskScreen extends React.Component{
                 <TextInput style={style.tituloInput} 
                            placeholder = "Digite o titulo"
                            maxLength = {20}
-                           onChangeText={(text) => this.setState({text})} />
+                           />
                 <Text style={style.descricao}> Descrição </Text>
                 <TextInput style={style.descricaoInput}
                            placeholder = "Digite a descrição"
                            maxLength = {50}
-                           multiline = {true}
+                           multiline = {true}                           
                            /> 
                 <View style={style.button}>
                     <Button title="Adicionar" color = "black" onPress={ () => this._onPressAdicionar}/>
@@ -29,6 +27,10 @@ class CreateTaskScreen extends React.Component{
             </View>
             );
     }
+}
+
+_onPressAdicionar = () => {
+     
 }
     
     const style = StyleSheet.create({
