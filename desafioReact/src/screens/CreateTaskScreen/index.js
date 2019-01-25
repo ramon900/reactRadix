@@ -5,15 +5,26 @@ _onPressAdicionar = () => {
 }
 
 class CreateTaskScreen extends React.Component{
+    constructor(props) {
+        super(props);
+        this.state;
+      }
     render(){
         return(
             <View style={style.container}> 
                 <Text style={style.titulo}> Titulo </Text>
-                <TextInput style={style.tituloInput} placeholder = "Digite o titulo"/>
+                <TextInput style={style.tituloInput} 
+                           placeholder = "Digite o titulo"
+                           maxLength = {20}
+                           onChangeText={(text) => this.setState({text})} />
                 <Text style={style.descricao}> Descrição </Text>
-                <TextInput style={style.descricaoInput} placeholder = "Digite a descrição"/> 
+                <TextInput style={style.descricaoInput}
+                           placeholder = "Digite a descrição"
+                           maxLength = {50}
+                           multiline = {true}
+                           /> 
                 <View style={style.button}>
-                    <Button title="Adicionar" color = "black" onPress={this._onPressAdicionar}/>
+                    <Button title="Adicionar" color = "black" onPress={ () => this._onPressAdicionar}/>
                 </View>                   
             </View>
             );
@@ -47,7 +58,7 @@ class CreateTaskScreen extends React.Component{
         },
         descricaoInput: {
             backgroundColor: '#EEEEEE',            
-            height: 100,
+            height: 100,            
             marginStart: 120,
             marginEnd: 120,
             marginBottom: 50
