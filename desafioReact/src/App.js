@@ -12,7 +12,7 @@ import {ListaScreen} from './screens';
 export default class App extends Component {
   render() {
     return (
-      <ListaScreen />
+      <ListaScreen/>
     );
   }
 }
